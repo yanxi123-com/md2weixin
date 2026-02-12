@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "sourceMap": false,
+    "removeComments": true,
+    "noImplicitAny": false,
+    "rootDir": "src"
+  },
+  "exclude": ["spec", "src/public/", "build.ts"]
+}

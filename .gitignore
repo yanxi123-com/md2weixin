@@ -1,0 +1,14 @@
+**/node_modules
+dist/
+**/**/*.log
+spec/tests/md/demo.html
+
+*.tsbuildinfo
+apps/web/src/assets/css/app.css
+apps/web/src/assets/css/themes.css
+apps/web/src/assets/scripts/juice.js
+apps/web/src/assets/scripts/marked.min.js
+apps/web/src/assets/scripts/prettify.min.js
+apps/web/src/assets/scripts/renderers/wx-renderer.js
+apps/web/src/assets/vendor/
+apps/web/src/libs/prettify/color-themes/github-v2.min.css

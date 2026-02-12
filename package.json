@@ -1,0 +1,24 @@
+{
+  "name": "md2weixin-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "packageManager": "pnpm@9.0.0",
+  "_moduleAliases": {
+    "@src": "apps/api/dist",
+    "md2weixin-core": "packages/core/dist"
+  },
+  "scripts": {
+    "build:core": "pnpm --dir packages/core build",
+    "build:cli": "pnpm --dir packages/cli build",
+    "build:api": "pnpm --dir apps/api build",
+    "build:web": "pnpm --dir apps/web build",
+    "release:build": "pnpm build:core && pnpm build:cli",
+    "release:publish": "pnpm release:build && pnpm --filter md2weixin-core publish --access public --no-git-checks && pnpm --filter md2weixin publish --access public --no-git-checks",
+    "release:publish:dry-run": "pnpm release:build && pnpm --filter md2weixin-core publish --access public --no-git-checks --dry-run && pnpm --filter md2weixin publish --access public --no-git-checks --dry-run",
+    "dev:api": "pnpm --dir apps/api dev",
+    "dev:web": "pnpm --dir apps/web start",
+    "start:api": "pnpm --dir apps/api start",
+    "cli": "pnpm --dir packages/cli build && node ./packages/cli/dist/index.js",
+    "release:version": "node ./scripts/bump-versions.mjs"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "md2weixin-core",
+  "version": "1.0.0",
+  "private": false,
+  "packageManager": "pnpm@9.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yanxi123-com/md2weixin.git"
+  },
+  "homepage": "https://github.com/yanxi123-com/md2weixin",
+  "bugs": {
+    "url": "https://github.com/yanxi123-com/md2weixin/issues"
+  },
+  "author": "https://yanxi123.com/",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "node ./scripts/build.mjs",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "jsdom": "^25.0.0",
+    "juice": "^11.0.0",
+    "marked": "^0.7.0"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^21.1.7",
+    "browserify": "^17.0.0",
+    "juice-browser": "npm:juice@8.1.0",
+    "typescript": "^5.5.4"
+  }
+}

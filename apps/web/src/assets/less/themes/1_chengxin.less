@@ -1,0 +1,58 @@
+h1 {
+  font-size: 24px;
+  text-align: left;
+  font-weight: bold;
+  display: table;
+  margin-top: 30px;
+  margin-bottom: 15px;
+
+  .content {
+    font-size: 24px;
+  }
+}
+
+h2 {
+  border-bottom: 2px solid rgb(239, 112, 96);
+  font-size: 1.3em;
+
+  .content {
+    display: inline-block;
+    font-weight: bold;
+    background: rgb(239, 112, 96);
+    color: #ffffff;
+    padding: 3px 10px 1px;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    margin-right: 3px;
+  }
+
+  &:after {
+    display: inline-block;
+    content: " ";
+    vertical-align: bottom;
+    border-bottom: 36px solid #efebe9;
+    border-right: 20px solid transparent;
+  }
+}
+
+blockquote {
+  border-left-color: rgb(239, 112, 96);
+  background: #fff9f9;
+}
+
+a {
+  color: rgb(239, 112, 96);
+  border-bottom: 1px solid rgb(239, 112, 96);
+}
+.footnote-word {
+  color: #ff3502;
+}
+.footnote-ref {
+  color: rgb(239, 112, 96);
+}
+
+// code
+p code,
+i code {
+  color: rgb(239, 112, 96);
+}

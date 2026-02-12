@@ -1,0 +1,25 @@
+{
+  "packageManager": "pnpm@9.0.0",
+  "scripts": {
+    "sync:core-assets": "pnpm --filter md2weixin-core build && node ./scripts/sync-core-assets.mjs",
+    "start": "pnpm run sync:core-assets && pnpm run serve",
+    "start:with-less": "pnpm run sync:core-assets && npm-run-all --parallel less serve",
+    "build": "pnpm run sync:core-assets && node ./scripts/build-dist.mjs",
+    "preview": "serve dist -p 8087",
+    "less": "chokidar 'src/assets/less/**/*.less' -c 'lessc src/assets/less/themes/index.less src/assets/css/themes.css'",
+    "serve": "serve src -p 8086"
+  },
+  "devDependencies": {
+    "chokidar-cli": "^3.0.0",
+    "less": "^4.2.0",
+    "npm-run-all": "^4.1.5",
+    "serve": "^14.2.3"
+  },
+  "dependencies": {
+    "axios": "0.19.0-beta.1",
+    "element-ui": "2.11.1",
+    "jquery": "3.4.1",
+    "marked": "0.7.0",
+    "vue": "2.6.10"
+  }
+}

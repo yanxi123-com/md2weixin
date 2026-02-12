@@ -1,0 +1,290 @@
+.themes {
+  font-size: 16px;
+  &.chengxin {
+    @import "./1_chengxin.less";
+  }
+  &.mohei {
+    @import "./2_mohei.less";
+  }
+  &.chazi {
+    @import "./3_chazi.less";
+  }
+  &.nenqing {
+    @import "./4_nenqing.less";
+  }
+  &.lvyi {
+    @import "./5_lvyi.less";
+  }
+  &.hongfei {
+    @import "./6_hongfei.less";
+  }
+  &.wechat-format {
+    @import "./7_wechat-format.less";
+  }
+  &.lanying {
+    @import "./8_lanying.less";
+  }
+  &.kejilan {
+    @import "./9_kejilan.less";
+  }
+  &.lanqing {
+    @import "./10_lanqing.less";
+  }
+  &.shanchui {
+    @import "./11_shanchui.less";
+  }
+  &.qianduan {
+    @import "./12_qianduan.less";
+  }
+  &.jikehei {
+    @import "./13_jikehei.less";
+  }
+  &.jian {
+    @import "./14_jian.less";
+  }
+  &.qiangweizi {
+    @import "./15_qiangweizi.less";
+  }
+  &.menglv {
+    @import "./16_menglv.less";
+  }
+  &.quanzhanlan {
+    @import "./17_quanzhanlan.less";
+  }
+
+  // p
+  p {
+    font-size: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin: 0;
+    line-height: 26px;
+    color: black;
+  }
+
+  /* h1 - h6 */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    margin-left: 0;
+    font-weight: bold;
+    color: black;
+  }
+  h1 {
+    font-size: 24px;
+  }
+  h2 {
+    font-size: 22px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  h4 {
+    font-size: 18px;
+  }
+
+  hr {
+    box-sizing: content-box;
+    height: 1px;
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0);
+  }
+
+  strong {
+    font-weight: bold;
+  }
+  em {
+    font-style: italic;
+    color: black;
+  }
+
+  // image
+  figure {
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    img {
+      display: block;
+      margin: 0 auto;
+      width: auto;
+      max-width: 100%;
+    }
+    figcaption {
+      margin-top: 5px;
+      text-align: center;
+      color: #888;
+      font-size: 14px;
+    }
+  }
+
+  blockquote {
+    display: block;
+    font-size: 0.9em;
+    overflow: auto;
+    border-left: 3px solid rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.05);
+    color: #6a737d;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+    &.important p {
+      margin: 0px;
+      color: black;
+      line-height: 26px;
+    }
+  }
+
+  // link
+  a {
+    text-decoration: none;
+    color: #1e6bb8;
+    word-wrap: break-word;
+    font-weight: bold;
+    border-bottom: 1px solid #1e6bb8;
+  }
+  .footnote-word {
+    color: #1e6bb8;
+    font-weight: bold;
+  }
+  .footnote-ref {
+    color: #1e6bb8;
+    font-weight: bold;
+
+    font-size: 75%;
+  }
+
+  // list
+  .ol,
+  .ul {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding-left: 25px;
+    color: black;
+  }
+  .listitem {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    line-height: 26px;
+    text-align: left;
+    color: rgb(1, 1, 1);
+    font-weight: 500;
+    text-indent: -1em;
+    display: block;
+  }
+
+  // table
+  table {
+    border-collapse: collapse;
+    display: table;
+    text-align: left;
+    thead tr td {
+      font-weight: bold;
+      background-color: #f0f0f0;
+    }
+    tr {
+      border: 0;
+      border-top: 1px solid #ccc;
+      background-color: white;
+      &:nth-child(2n) {
+        background-color: #f8f8f8;
+      }
+      td {
+        font-size: 16px;
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        text-align: left;
+      }
+    }
+  }
+
+  // code
+  p code,
+  li code {
+    font-size: 14px;
+    word-wrap: break-word;
+    padding: 2px 4px;
+    border-radius: 4px;
+    margin: 0 2px;
+    color: #1e6bb8;
+    background-color: rgba(27, 31, 35, 0.05);
+    font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+    word-break: break-all;
+  }
+  .code-snippet__fix {
+    word-wrap: break-word !important;
+    font-size: 14px;
+    margin: 10px 0;
+    display: block;
+    color: #333;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.03);
+    border: 1px solid #f0f0f0;
+    border-radius: 2px;
+    display: flex;
+    line-height: 20px;
+  }
+
+  // 底部参考资料等
+  .footnote-item {
+    display: flex;
+
+    .footnote-num {
+      display: inline;
+      flex: 1;
+      background: none;
+      font-size: 80%;
+      opacity: 0.6;
+      line-height: 26px;
+      font-family: ptima-Regular, Optima, PingFangSC-light, PingFangTC-light,
+        "PingFang SC", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    }
+
+    p {
+      display: inline;
+      font-size: 14px;
+      flex: 10;
+      padding: 0px;
+      margin: 0;
+      line-height: 26px;
+      color: black;
+      word-break: break-all;
+    }
+  }
+
+  // 无衬线
+  &.fonts-no-cx {
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, PingFangSC-light,
+      PingFangTC-light, "Open Sans", "Helvetica Neue", sans-serif;
+  }
+  // 衬线
+  &.fonts-cx {
+    font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light,
+      "PingFang SC", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  }
+
+  // &.size14 p {
+  //   font-size: 14px;
+  // }
+  // &.size15 p {
+  //   font-size: 15px;
+  // }
+  // &.size16 p {
+  //   font-size: 16px;
+  // }
+  // &.size17 p {
+  //   font-size: 17px;
+  // }
+}

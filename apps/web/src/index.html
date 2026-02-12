@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>微信公众号 Markdown 编辑器</title>
+  <link rel="shortcut icon" href="assets/images/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="assets/images/favicon.png" />
+
+  <link rel="stylesheet" href="assets/css/loading.css" />
+
+  <link rel="stylesheet" href="assets/vendor/element-ui/theme-chalk/index.css" />
+
+  <link rel="stylesheet" href="codemirror/codemirror.css" />
+  <link rel="stylesheet" href="codemirror/theme/base16-light.css" />
+  <link rel="stylesheet" href="codemirror/theme/duotone-light.css" />
+  <link rel="stylesheet" href="codemirror/theme/monokai.css" />
+
+  <link rel="stylesheet" href="libs/prettify/color-themes/github-v2.min.css" />
+
+  <link rel="stylesheet" href="./assets/css/themes.css" />
+  <!-- <link
+      rel="stylesheet/less"
+      type="text/css"
+      href="./assets/less/themes/index.less"
+    /> -->
+
+  <link rel="stylesheet" href="assets/css/app.css" />
+</head>
+
+<body>
+  <!--loading 界面-->
+  <div class="loading" id="loading">
+    <div class="loading-wrapper">
+      <div class="loading-text">Loading...</div>
+      <div class="loading-anim"></div>
+    </div>
+  </div>
+
+  <!--应用主体-->
+  <div id="app" class="container">
+    <el-container>
+      <el-header class="top">
+        <a href="https://yanxi123.com/" title="阎曦的小站" target="_blank">
+          <el-avatar :size="32" src="assets/images/yanxi123.png" class="web-icon" /></a>
+        <div>
+          <span class="web-title">公众号 Markdown 编辑器 </span>
+        </div>
+        <el-form size="mini" class="ctrl" :inline="true">
+          <el-form-item label="编辑器主题">
+            <el-select v-model="currentEditorTheme" size="mini" placeholder="选择字体" @change="editorThemeChanged">
+              <el-option v-for="editorTheme in editorThemes" :key="editorTheme.value" :label="editorTheme.label"
+                :value="editorTheme.value">
+              </el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="字体">
+            <el-select v-model="currentFont" size="mini" placeholder="选择字体">
+              <el-option v-for="font in builtinFonts" :style="{fontFamily: font.value}" :key="font.value"
+                :label="font.label" :value="font.value">
+                <span class="select-item-left">{{ font.label }}</span>
+                <span class="select-item-right">Abc</span>
+              </el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="主题">
+            <el-select v-model="currentTheme" size="mini" placeholder="选择主题样式">
+              <el-option v-for="theme in themeOption" :key="theme.value" :label="theme.label" :value="theme.value">
+                <span class="select-item-left">{{ theme.label }}</span>
+                <span class="select-item-right">{{ theme.author }}</span>
+              </el-option>
+            </el-select>
+          </el-form-item>
+        </el-form>
+        <el-dropdown>
+          <span class="el-dropdown-link">
+            <el-button class="about">帮助</el-button>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item><el-link @click="aboutDialogVisible = true">关于编辑器</el-link>
+            </el-dropdown-item>
+            <el-dropdown-item><el-link href="https://yanxi123.com/" target="_blank">阎曦的小站</el-link></el-dropdown-item>
+            <el-dropdown-item><el-link @click="setMarkdownContent()">MD示例: 编辑器介绍</el-link></el-dropdown-item>
+            <el-dropdown-item><el-link href="https://www.coze.cn/store/plugin/7416025696356581414" target="_blank">扣子
+                Coze 插件</el-link></el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </el-header>
+      <el-main class="main-body">
+        <el-row :gutter="10" class="main-section">
+          <el-col :span="12">
+            <textarea id="editor" type="textarea" placeholder="Your markdown here." v-model="source">
+              </textarea>
+          </el-col>
+          <el-col :span="12" class="preview-wrapper" id="preview">
+            <section style="height: 100%">
+              <div class="hint">
+                全选复制或<a href="#" @click="copy" class="copy-button">点此复制</a>，然后在公众号编辑器粘贴
+              </div>
+              <div class="preview">
+                <section id="md-root" v-html="output" :class="['themes', currentTheme, currentFont]"></section>
+              </div>
+            </section>
+          </el-col>
+        </el-row>
+      </el-main>
+    </el-container>
+
+    <el-dialog title="关于" :visible.sync="aboutDialogVisible" width="500px" center>
+      <div style="
+            text-align: center;
+            margin: 20px;
+            font-size: 20px;
+            border-bottom: 1px solid #333;
+          ">
+        一款简洁好用的微信公众号 Markdown 编辑器
+      </div>
+
+      <div style="
+            text-align: center;
+            margin-top: 30px;
+            margin-top: 30px;
+            font-size: 20px;
+            font-weight: 600;
+          ">
+        <div>欢迎关注《高效开发》公众号</div>
+        <img src="./assets/images/wechat.jpg" style="max-width: 200px" />
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="openWindow('https://github.com/yanxi123-com/md2weixin')">查看 GitHub
+          仓库</el-button>
+      </span>
+    </el-dialog>
+  </div>
+
+  <script src="assets/vendor/vue.min.js"></script>
+  <script src="assets/vendor/axios.min.js"></script>
+  <script src="assets/scripts/marked.min.js"></script>
+
+  <script src="codemirror/codemirror.js"></script>
+  <script src="codemirror/mode/markdown/markdown.js"></script>
+
+  <script src="assets/scripts/prettify.min.js"></script>
+  <script src="assets/vendor/element-ui/index.js"></script>
+  <script src="assets/vendor/jquery.min.js"></script>
+
+  <script src="libs/sync-scroll.js"></script>
+  <script src="assets/scripts/renderers/wx-renderer.js"></script>
+  <script src="assets/scripts/editor.js"></script>
+  <script src="assets/scripts/loading.js"></script>
+
+  <!--  <script>
+      less = { env: "development" };
+    </script>
+    <script src="assets/scripts/less.min.js"></script>
+    <script>
+      less.watch();
+    </script>  -->
+
+  <script src="assets/scripts/juice.js"></script>
+
+</body>
+
+</html>

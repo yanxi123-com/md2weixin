@@ -1,0 +1,17 @@
+### 调用本地接口
+POST http://localhost:3000/api/wx-md
+Content-Type: application/json
+
+{"font": "cx", "theme": "chengxin", "markdown": "## t1\n1. text1\n## t2\n1. text2"}
+
+### 调用本地
+GET http://localhost:3000/
+
+### 调用远程接口
+POST https://markdown.zeabur.app/api/wx-md
+Content-Type: application/json
+
+{"fonts": "cx", "theme": "hongfei", "markdown": "## t1\n1. text1\n## t2\n1. text2"}
+
+### 调用远程
+GET https://markdown.zeabur.app/

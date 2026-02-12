@@ -1,0 +1,36 @@
+{
+  "name": "md2weixin",
+  "version": "1.0.0",
+  "private": false,
+  "packageManager": "pnpm@9.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yanxi123-com/md2weixin.git"
+  },
+  "homepage": "https://github.com/yanxi123-com/md2weixin",
+  "bugs": {
+    "url": "https://github.com/yanxi123-com/md2weixin/issues"
+  },
+  "author": "https://yanxi123.com/",
+  "bin": {
+    "md2weixin": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "pnpm --dir ../core build && pnpm exec tsc -p tsconfig.json",
+    "cli": "node ./dist/index.js",
+    "dev": "pnpm exec ts-node ./src/index.ts",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "md2weixin-core": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}

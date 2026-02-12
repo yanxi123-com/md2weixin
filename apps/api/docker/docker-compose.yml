@@ -1,0 +1,14 @@
+version: '3.3'  # 选择一个合适的版本，根据你的需求
+
+services:
+  my-service:
+    image: wx-md  # 替换为你的镜像名称
+    ports:
+      - "8081:8081"  # 映射主机的 8081 端口到容器的 8081 端口
+    # 如果需要，可以设置其他参数，比如环境变量、卷、网络等
+    environment:
+      - NODE_ENV=production
+    # volumes:
+    #   - ./data:/app/data  # 示例卷映射
+    # networks:
+    #   - my-network

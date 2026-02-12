@@ -1,0 +1,152 @@
+& {
+  font-family: PingFangSC-Light;
+}
+
+p {
+  margin: 10px 10px;
+  line-height: 1.75;
+  letter-spacing: 0.2em;
+  font-size: 15px;
+  word-spacing: 0.1em;
+}
+
+h1 {
+  border-bottom: 2px solid #0e88eb;
+  font-size: 1.4em;
+  text-align: center;
+
+  .content {
+    font-size: 1.4em;
+    display: inline-block;
+    font-weight: bold;
+    //background: #0e88eb;
+    color: #ffffff;
+    color: #0e88eb;
+    padding: 3px 10px 1px;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    margin-right: 3px;
+  }
+}
+
+h2 {
+  text-align: left;
+  margin: 20px 10px 0px 0px;
+  .content {
+    font-family: STHeitiSC-Light;
+    font-size: 22px;
+    color: #0e88eb;
+    font-weight: bolder;
+    display: inline-block;
+    padding-left: 10px;
+    border-left: 5px solid #0e88eb;
+  }
+}
+
+h3 {
+  font-size: 18px;
+  color: #0e88eb;
+  .content {
+    font-size: 18px;
+    color: #0e88eb;
+  }
+}
+
+blockquote.important {
+  font-style: normal;
+  border-left: none;
+  padding: 10px;
+  position: relative;
+  line-height: 1.8;
+  border-radius: 0px 0px 10px 10px;
+  color: #0e88eb;
+  background: #fff;
+  box-shadow: #84a1a8 0px 10px 15px;
+
+  &:before {
+    content: "★ ";
+    display: inline;
+    color: #0e88eb;
+    font-size: 4em;
+    font-family: Arial, serif;
+    line-height: 1em;
+    font-weight: 700;
+  }
+
+  p {
+    color: #0e88eb;
+    font-size: 15px;
+    display: inline;
+  }
+
+  &:after {
+    content: "”";
+    float: right;
+    display: inline;
+    color: #0e88eb;
+    font-size: 3em;
+    line-height: 1em;
+    font-weight: 500;
+  }
+}
+
+a {
+  color: #0e88eb;
+  border-bottom: 0px solid #ff3502;
+  font-family: STHeitiSC-Light;
+}
+.footnote-word {
+  color: #0e88eb;
+}
+.footnote-ref {
+  color: #0e88eb;
+}
+
+strong {
+  font-weight: border;
+  color: #0e88eb;
+}
+
+em {
+  color: #0e88eb;
+  letter-spacing: 0.3em;
+}
+
+hr {
+  height: 1px;
+  padding: 0;
+  border: none;
+  border-top: medium solidid #333;
+  text-align: center;
+  background-image: linear-gradient(
+    to right,
+    rgba(248, 57, 41, 0),
+    #0e88eb,
+    rgba(248, 57, 41, 0)
+  );
+}
+
+img {
+  border-radius: 0px 0px 5px 5px;
+  display: block;
+  margin: 20px auto;
+  width: 85%;
+  height: 100%;
+  object-fit: contain;
+  box-shadow: #84a1a8 0px 10px 15px;
+}
+figcaption {
+  display: block;
+  font-size: 12px;
+  font-family: PingFangSC-Light;
+}
+
+table tr th,
+table tr td {
+  font-size: 15px;
+}
+
+.footnote-item em {
+  color: #082a71;
+  font-size: 12px;
+}
