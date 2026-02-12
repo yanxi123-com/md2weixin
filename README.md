@@ -33,5 +33,7 @@ yarn start
 - 2024-09-17
   - 由于公众号不支持锚链接，自动去掉锚链接，只保留文字
   - 增加 17 个新的主题样式，参考 [Markdown.com.cn](https://markdown.com.cn)
+  - 修改样式,可以进入/md2wechat/src/assets/less/themes/目录下修改
 - 2024-01-01
   - 上线 [微信公众号 Markdown 编辑器](https://yanxi123.com/md2wechat/)
+  
