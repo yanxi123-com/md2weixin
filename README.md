@@ -4,7 +4,7 @@
 
 你可以把精力集中在内容创作上，而不是在公众号后台反复调样式。
 
-[在线使用](https://yanxi123.com/md2weixin/)
+[在线使用](https://yanxi123.com/md2wechat/)
 
 ## 功能亮点
 
