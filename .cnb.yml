@@ -25,7 +25,7 @@
 
           coscli config set --secret_id "$COS_SECRET_ID" --secret_key "$COS_SECRET_KEY"
           coscli config add --init-skip=true -b "$COS_BUCKET" -r "$COS_REGION"
-          coscli cp ./apps/web/dist "cos://${COS_BUCKET}/md2weixin" -r
+          coscli cp ./apps/web/dist "cos://${COS_BUCKET}/md2wechat" -r
 
       - name: 刷新 CDN 缓存
         image: python:3.11-slim
@@ -35,7 +35,7 @@
           : "${TENCENTCLOUD_SECRET_KEY:?missing TENCENTCLOUD_SECRET_KEY}"
           : "${CDN_PURGE_PATH:?missing CDN_PURGE_PATH}"
 
-          PURGE_PATH="${CDN_PURGE_PATH%/}/md2weixin/*"
+          PURGE_PATH="${CDN_PURGE_PATH%/}/md2wechat/*"
 
           pip install --no-cache-dir tccli
           tccli configure set secretId "$TENCENTCLOUD_SECRET_ID"
