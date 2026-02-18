@@ -41,5 +41,5 @@
           tccli cdn PurgePathCache --cli-unfold-argument --Paths "$CDN_PURGE_PATH" --FlushType flush || \
           tccli cdn PurgePathCache --cli-unfold-argument --Paths "$CDN_PURGE_PATH" --FlushType delete
 
-main:
+cnb:
   push: *web_ci
