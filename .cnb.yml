@@ -1,0 +1,45 @@
+.web_ci: &web_ci
+  - docker:
+      image: node:20-bookworm
+      volumes:
+        - /root/.npm:cow
+    imports: https://cnb.cool/winqcapital/secrets/-/blob/main/yanxi-hugoplate.yml
+    stages:
+      - name: 安装依赖并构建 Web
+        script: |
+          set -e
+          corepack enable
+          corepack prepare pnpm@9.0.0 --activate
+          pnpm install --frozen-lockfile
+          pnpm --dir apps/web build
+          test -d apps/web/dist
+
+      - name: 上传 COS
+        image: tencentcom/coscli
+        script: |
+          set -e
+          : "${COS_SECRET_ID:?missing COS_SECRET_ID}"
+          : "${COS_SECRET_KEY:?missing COS_SECRET_KEY}"
+          : "${COS_BUCKET:?missing COS_BUCKET}"
+          : "${COS_REGION:?missing COS_REGION}"
+
+          coscli config set --secret_id "$COS_SECRET_ID" --secret_key "$COS_SECRET_KEY"
+          coscli config add --init-skip=true -b "$COS_BUCKET" -r "$COS_REGION"
+          coscli cp ./apps/web/dist "cos://${COS_BUCKET}" -r
+
+      - name: 刷新 CDN 缓存
+        image: python:3.11-slim
+        script: |
+          set -e
+          : "${TENCENTCLOUD_SECRET_ID:?missing TENCENTCLOUD_SECRET_ID}"
+          : "${TENCENTCLOUD_SECRET_KEY:?missing TENCENTCLOUD_SECRET_KEY}"
+          : "${CDN_PURGE_PATH:?missing CDN_PURGE_PATH}"
+
+          pip install --no-cache-dir tccli
+          tccli configure set secretId "$TENCENTCLOUD_SECRET_ID"
+          tccli configure set secretKey "$TENCENTCLOUD_SECRET_KEY"
+          tccli cdn PurgePathCache --cli-unfold-argument --Paths "$CDN_PURGE_PATH" --FlushType flush || \
+          tccli cdn PurgePathCache --cli-unfold-argument --Paths "$CDN_PURGE_PATH" --FlushType delete
+
+main:
+  push: *web_ci
