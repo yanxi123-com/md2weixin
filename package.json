@@ -19,6 +19,7 @@
     "dev:web": "pnpm --dir apps/web start",
     "start:api": "pnpm --dir apps/api start",
     "cli": "pnpm --dir packages/cli build && node ./packages/cli/dist/index.js",
+    "gencover": "pnpm --dir packages/cli build && node ./packages/cli/dist/gencover.js",
     "release:version": "node ./scripts/bump-versions.mjs"
   }
 }

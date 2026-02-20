@@ -27,7 +27,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "coze-coding-dev-sdk": "^0.7.16",
+    "@coze/api": "^1.3.9",
     "gray-matter": "^4.0.3",
     "md2weixin-core": "workspace:*"
   },

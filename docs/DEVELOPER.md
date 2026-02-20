@@ -61,7 +61,8 @@ pnpm --dir packages/cli cli -- ./apps/api/spec/tests/md/demo.md --theme chengxin
 pnpm --silent cli -- ./apps/api/spec/tests/md/demo.md --theme chengxin --font cx
 
 # 运行 gencover（编译产物）
-node ./packages/cli/dist/gencover.js --prompt "封面提示词" --ratio 16:9 --style 写实风格
+# 需要先设置 COZE_API_KEY（可选 COZE_WORKFLOW_ID，默认 7608985382533005339；可选 COZE_API_BASE_URL）
+node ./packages/cli/dist/gencover.js --prompt "封面提示词"
 
 # 查看命令版本（来自 packages/cli/package.json）
 node ./packages/cli/dist/index.js -v

@@ -44,6 +44,7 @@ md2weixin ./article.md --theme chengxin --font cx > output.html
 
 ```bash
 pnpm --silent cli -- ./article.md --theme chengxin --font cx > output.html
+pnpm --silent gencover -- --prompt "一只戴着侦探帽的柴犬"
 ```
 
 ### CLI 使用（与安装方式无关）
@@ -65,20 +66,30 @@ Markdown 转换：
 封面图生成（`gencover`）：
 
 - `--prompt`：必填，图像提示词（不超过 2000 字符）
-- `--ratio`：可选，`16:9 | 9:16 | 1:1 | 4:3`，默认 `16:9`
-- `--style`：可选，风格描述，默认 `写实风格`
 
 示例：
 
 ```bash
-gencover --prompt "一只戴着侦探帽的柴犬" --ratio 16:9 --style 写实风格
+gencover --prompt "一只戴着侦探帽的柴犬"
 ```
 
-环境变量（Coze SDK 自动读取）：
+示例输出：
+
+```json
+{
+  "success": true,
+  "imageUrl": "https://s.coze.cn/t/hwRtG9yX3nU/"
+}
+```
+
+环境变量：
 
 ```bash
-COZE_API_KEY=your_api_key_here
-COZE_API_BASE_URL=https://api.coze.cn
+COZE_API_KEY=your_pat_token
+# 可选：COZE_WORKFLOW_ID=your_workflow_id（默认 7608985382533005339）
+# 可选：COZE_API_BASE_URL=https://api.coze.cn
+# 可选：COZE_BOT_ID=your_bot_id
+# 可选：COZE_APP_ID=your_app_id
 ```
 
 帮助：
