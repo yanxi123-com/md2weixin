@@ -131,3 +131,11 @@ pnpm --dir apps/web preview
 ## 开发文档
 
 - `docs/DEVELOPER.md`
+
+## Changelist
+
+### v1.0.1（2026-02-20）
+
+- CLI 在转换前会忽略 Markdown 文件开头的 front matter，仅处理正文内容。
+- front matter 解析改为使用 `gray-matter`，提升 YAML/TOML 场景的兼容性与稳定性。
+- 当 front matter 解析异常时，CLI 会自动回退为按原文继续转换，避免中断流程。
