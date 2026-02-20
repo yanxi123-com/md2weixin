@@ -1,6 +1,6 @@
 {
   "name": "md2weixin",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "private": false,
   "packageManager": "pnpm@9.0.0",
   "license": "MIT",

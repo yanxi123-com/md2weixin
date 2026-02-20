@@ -175,6 +175,13 @@ pnpm --dir apps/web preview
 
 ## Changelist
 
+### v1.1.0（2026-02-20）
+
+- 新增独立命令 `gencover`，用于生成封面图 URL（支持 `--prompt`）。
+- `gencover` 改为基于 `@coze/api` 调用 Coze Workflow，支持默认工作流 ID 与可选环境变量配置。
+- `gencover` 输出结构优化：成功时返回 `success` 与 `imageUrl`，失败时返回 `success` 与 `message`。
+- CLI 增加 `-v/--version` 支持（`md2weixin` 与 `gencover` 均可查看版本号）。
+
 ### v1.0.1（2026-02-20）
 
 - CLI 在转换前会忽略 Markdown 文件开头的 front matter，仅处理正文内容。
