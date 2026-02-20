@@ -17,6 +17,7 @@ const HELP_TEXT = `Usage:
 Options:
   -t, --theme   Theme name
   -f, --font    Font class: cx | no-cx
+  -v, --version Show version
   -h, --help    Show help
 `;
 
@@ -46,6 +47,12 @@ function parseArgs(argv: string[]): IArgs {
 
     if (arg === "-h" || arg === "--help") {
       process.stdout.write(HELP_TEXT);
+      process.exit(0);
+    }
+
+    if (arg === "-v" || arg === "--version") {
+      const pkg = require("../package.json") as { version?: string };
+      process.stdout.write(`${pkg.version || "unknown"}\n`);
       process.exit(0);
     }
 
@@ -94,7 +101,6 @@ function parseArgs(argv: string[]): IArgs {
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
-
   const mdPath = path.resolve(process.cwd(), args.mdPath);
   if (!fs.existsSync(mdPath)) {
     throw new Error(`Markdown file not found: ${mdPath}`);

@@ -10,8 +10,8 @@
 
 ## 常用命令（摘录）
 
-- `node packages/cli/dist/index.js extract-xml <billdef.xml> --out <output.json>`：提取旧 BillDef XML 为 DSL + IR。
-- `node packages/cli/dist/index.js gen-apollo <ir-or-extract.json> --profile <profile.json> --out-dir <outputDir>`：基于 IR 与 Profile 生成 Apollo 代码。
+- `pnpm --silent cli -- ./article.md --theme chengxin --font cx > output.html`：把 Markdown 转为公众号 HTML。
+- `gencover --prompt "一只戴着侦探帽的柴犬" --ratio 16:9 --style 写实风格`：生成封面图 URL（需配置 Coze 环境变量）。
 
 ## Git 提交
 

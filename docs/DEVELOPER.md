@@ -59,6 +59,13 @@ pnpm --dir packages/cli cli -- ./apps/api/spec/tests/md/demo.md --theme chengxin
 
 # 从根脚本运行 CLI（如需重定向，建议加 --silent）
 pnpm --silent cli -- ./apps/api/spec/tests/md/demo.md --theme chengxin --font cx
+
+# 运行 gencover（编译产物）
+node ./packages/cli/dist/gencover.js --prompt "封面提示词" --ratio 16:9 --style 写实风格
+
+# 查看命令版本（来自 packages/cli/package.json）
+node ./packages/cli/dist/index.js -v
+node ./packages/cli/dist/gencover.js -v
 ```
 
 #### API

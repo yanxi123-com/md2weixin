@@ -46,16 +46,46 @@ md2weixin ./article.md --theme chengxin --font cx > output.html
 pnpm --silent cli -- ./article.md --theme chengxin --font cx > output.html
 ```
 
+### CLI 使用（与安装方式无关）
+
+Markdown 转换示例：
+
+```bash
+md2weixin ./article.md --theme chengxin --font cx > output.html
+```
+
 CLI 参数：
+
+Markdown 转换：
 
 - `<markdown-file-path>`：必填，Markdown 文件路径
 - `--theme` / `-t`：可选，主题名，默认 `default`
 - `--font` / `-f`：可选，`cx` 或 `no-cx`，默认 `cx`
 
+封面图生成（`gencover`）：
+
+- `--prompt`：必填，图像提示词（不超过 2000 字符）
+- `--ratio`：可选，`16:9 | 9:16 | 1:1 | 4:3`，默认 `16:9`
+- `--style`：可选，风格描述，默认 `写实风格`
+
+示例：
+
+```bash
+gencover --prompt "一只戴着侦探帽的柴犬" --ratio 16:9 --style 写实风格
+```
+
+环境变量（Coze SDK 自动读取）：
+
+```bash
+COZE_API_KEY=your_api_key_here
+COZE_API_BASE_URL=https://api.coze.cn
+```
+
 帮助：
 
 ```bash
-md2weixin --help
+md2weixin -h
+gencover -h
 ```
 
 ## 2. 启动 API 服务（Node.js）并用 curl 测试

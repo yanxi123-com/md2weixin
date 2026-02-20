@@ -14,7 +14,8 @@
   },
   "author": "https://yanxi123.com/",
   "bin": {
-    "md2weixin": "dist/index.js"
+    "md2weixin": "dist/index.js",
+    "gencover": "dist/gencover.js"
   },
   "files": [
     "dist"
@@ -26,6 +27,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
+    "coze-coding-dev-sdk": "^0.7.16",
     "gray-matter": "^4.0.3",
     "md2weixin-core": "workspace:*"
   },
