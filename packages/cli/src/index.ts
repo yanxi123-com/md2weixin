@@ -2,6 +2,7 @@
 
 import fs from "fs";
 import path from "path";
+import matter from "gray-matter";
 import { getHtml } from "md2weixin-core";
 
 interface IArgs {
@@ -18,6 +19,22 @@ Options:
   -f, --font    Font class: cx | no-cx
   -h, --help    Show help
 `;
+
+/**
+ * 借助 gray-matter 解析 front matter，仅返回正文内容。
+ */
+function getMarkdownContent(markdown: string): string {
+  const normalized = markdown.replace(/^\uFEFF/, "");
+  try {
+    if (/^\+\+\+[ \t]*\r?\n/.test(normalized)) {
+      return matter(normalized, { delimiters: "+++" }).content;
+    }
+
+    return matter(normalized).content;
+  } catch {
+    return normalized;
+  }
+}
 
 function parseArgs(argv: string[]): IArgs {
   let mdPath = "";
@@ -83,7 +100,7 @@ async function main() {
     throw new Error(`Markdown file not found: ${mdPath}`);
   }
 
-  const markdown = fs.readFileSync(mdPath, "utf-8");
+  const markdown = getMarkdownContent(fs.readFileSync(mdPath, "utf-8"));
   const html = await getHtml({
     markdown,
     theme: args.theme,

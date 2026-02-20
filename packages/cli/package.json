@@ -1,6 +1,6 @@
 {
   "name": "md2weixin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "packageManager": "pnpm@9.0.0",
   "license": "MIT",
@@ -26,6 +26,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "md2weixin-core": "workspace:*"
   },
   "devDependencies": {
