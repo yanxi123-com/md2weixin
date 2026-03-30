@@ -49,6 +49,8 @@ bash apps/api/deploy/ubuntu/install.sh
 - 安装 `md2weixin-api` 的 `systemd` 服务
 - 更新 `current` 软链并重启服务
 
+其中 `systemd` 单元会在部署时写入部署用户的 `NVM_DIR`，并通过 `nvm which default` 启动默认 Node 版本，避免把 `.nvm` 下的具体版本号写死在服务文件里。
+
 首次执行后，请立即编辑共享环境文件：
 
 ```bash

@@ -7,7 +7,8 @@ Type=simple
 User=__RUN_USER__
 Group=__RUN_GROUP__
 WorkingDirectory=__WORKING_DIRECTORY__
-ExecStart=/usr/bin/env node -r module-alias/register ./dist --env=production
+Environment=NVM_DIR=__NVM_DIR__
+ExecStart=/bin/bash -lc '. "$NVM_DIR/nvm.sh" && exec "$(nvm which default)" -r module-alias/register ./dist --env=production'
 Restart=always
 RestartSec=3
 Environment=NODE_ENV=production

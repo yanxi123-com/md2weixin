@@ -10,6 +10,8 @@ SERVICE_NAME="${SERVICE_NAME:-md2weixin-api}"
 INSTALL_ROOT="${INSTALL_ROOT:-/opt/md2weixin-api}"
 RUN_USER="${DEPLOY_USER:-${SUDO_USER:-$(id -un)}}"
 RUN_GROUP="${DEPLOY_GROUP:-$(id -gn "${RUN_USER}")}"
+RUN_HOME="${RUN_HOME:-$(eval echo "~${RUN_USER}")}"
+NVM_DIR="${NVM_DIR:-${RUN_HOME}/.nvm}"
 RELEASE_ID="$(date +%Y%m%d%H%M%S)"
 RELEASE_DIR="${INSTALL_ROOT}/releases/${RELEASE_ID}"
 CURRENT_LINK="${INSTALL_ROOT}/current"
@@ -42,7 +44,18 @@ ensure_prereqs() {
   require_command node
   require_command pnpm
   require_command rsync
+  require_command bash
   require_command systemctl
+
+  if [ ! -f "${NVM_DIR}/nvm.sh" ]; then
+    printf '找不到 nvm.sh: %s\n' "${NVM_DIR}/nvm.sh" >&2
+    exit 1
+  fi
+
+  if ! sudo -u "${RUN_USER}" /bin/bash -lc ". \"${NVM_DIR}/nvm.sh\" && nvm which default >/dev/null"; then
+    printf '无法解析 %s 的 nvm default，请先执行 nvm alias default <version>\n' "${RUN_USER}" >&2
+    exit 1
+  fi
 }
 
 prepare_dirs() {
@@ -93,6 +106,7 @@ render_systemd_service() {
   sed \
     -e "s|__RUN_USER__|${RUN_USER}|g" \
     -e "s|__RUN_GROUP__|${RUN_GROUP}|g" \
+    -e "s|__NVM_DIR__|${NVM_DIR}|g" \
     -e "s|__WORKING_DIRECTORY__|${CURRENT_LINK}/apps/api|g" \
     "${SERVICE_TEMPLATE}" >"${temp_file}"
 
