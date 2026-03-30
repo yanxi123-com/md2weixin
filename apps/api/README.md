@@ -8,6 +8,7 @@
 
 - 开发者说明：`../../docs/DEVELOPER.md`
 - 迁移计划：`../../docs/monorepo-migration.md`
+- Ubuntu API 部署：`./deploy/ubuntu/README.md`
 
 ## 功能特性
 
