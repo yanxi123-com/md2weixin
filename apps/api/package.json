@@ -39,7 +39,7 @@
     "express-async-errors": "^3.1.1",
     "helmet": "^7.1.0",
     "inserturlparams": "^2.0.4",
-    "jet-logger": "^2.0.1",
+    "jet-logger": "2.0.1",
     "jet-paths": "^1.0.9",
     "jsonfile": "^6.1.0",
     "module-alias": "^2.2.3",
