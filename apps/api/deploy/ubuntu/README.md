@@ -4,14 +4,13 @@
 
 - `systemd` 守护 Node.js API
 - `/opt/md2weixin-api` 作为发布根目录
-- `releases/current/shared` 三段式目录布局
+- `current` + `shared` 目录布局
 
 目录结构：
 
 ```text
 /opt/md2weixin-api/
-  releases/<timestamp>/
-  current -> releases/<timestamp>
+  current/
   shared/env/production.env
 ```
 
@@ -41,13 +40,12 @@ bash apps/api/deploy/ubuntu/install.sh
 
 脚本会自动完成：
 
-- 创建 `/opt/md2weixin-api/releases` 与 `/opt/md2weixin-api/shared/env`
+- 创建 `/opt/md2weixin-api/current` 与 `/opt/md2weixin-api/shared/env`
 - 若共享环境文件不存在，则用 `apps/api/env/production.env` 初始化
-- 把当前仓库同步到新的 release 目录
+- 把当前仓库同步到 `/opt/md2weixin-api/current`
 - 执行 `pnpm install --frozen-lockfile`
 - 执行 `pnpm --dir apps/api build`
-- 安装 `md2weixin-api` 的 `systemd` 服务
-- 更新 `current` 软链并重启服务
+- 安装并重启 `md2weixin-api` 的 `systemd` 服务
 
 其中 `systemd` 单元会在部署时写入部署用户的 `NVM_DIR`，并通过 `nvm which default` 启动默认 Node 版本，避免把 `.nvm` 下的具体版本号写死在服务文件里。
 
@@ -68,7 +66,8 @@ git pull
 bash apps/api/deploy/ubuntu/install.sh
 ```
 
-脚本是可重复执行的；如果构建失败，不会切换 `current` 到新版本。
+脚本是可重复执行的，会直接更新 `/opt/md2weixin-api/current`，不保留历史版本。
+如果构建失败，脚本会退出且不会重启服务。
 
 ## systemd
 
